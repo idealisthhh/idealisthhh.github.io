@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>IDA Pro 入门 | Idealist</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Idealist">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/medias/7.jpg)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/medias/logo.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Idealist</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2020-03-07T07:52:00.000Z" itemprop="datePublished">
+          2020-03-07
+      </time>
+    
+</span>
+    <h1 class="post-title">IDA Pro 入门</h1>
+    <section class="post-content">
+      <h1 id="IDA-Pro入门指南"><a href="#IDA-Pro入门指南" class="headerlink" title="IDA Pro入门指南"></a>IDA Pro入门指南</h1><h2 id="IDA-文件打开界面"><a href="#IDA-文件打开界面" class="headerlink" title="IDA 文件打开界面"></a>IDA 文件打开界面</h2><ol>
+<li>IDA View-A是反汇编窗口</li>
+<li>HexView-A是十六进制格式显示的窗口</li>
+<li>Imports是导入表（程序中调用到的外面的函数）</li>
+<li>Functions是函数表（这个程序中的函数）</li>
+<li>Structures是结构</li>
+<li>Enums是枚举<br><strong>我们进行逆向分析的主要场所就在IDA View-A反汇编窗口</strong>  </li>
+</ol>
+<h2 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h2><ol>
+<li>EAX 是”累加器”(accumulator), 它是很多加法乘法指令的缺省寄存器</li>
+<li>EBX 是”基地址”(base)寄存器, 在内存寻址时存放基地址</li>
+<li>ECX 是计数器(counter), 是重复(REP)前缀指令和LOOP指令的内定计数器</li>
+<li>EDX 则总是被用来放整数除法产生的余数</li>
+<li>ESI/EDI 分别叫做”源/目标索引寄存器”(source/destination index),因为在很多字符串操作指令中， DS:ESI指向源串,而ES:EDI指向目标串</li>
+<li>EBP 是”基址指针”(BASE POINTER), 它最经常被用作高级语言函数调用的”框架指针”(frame pointer)</li>
+<li>ESP 专门用作堆栈指针，被形象地称为栈顶指针，堆栈的顶部是地址小的区域，压入堆栈的数据越多，ESP也就越来越小。在32位平台上，ESP每次减少4字节。</li>
+</ol>
+<h2 id="生成汇编语句对应的机器代码"><a href="#生成汇编语句对应的机器代码" class="headerlink" title="生成汇编语句对应的机器代码"></a>生成汇编语句对应的机器代码</h2><p>“Options” –&gt; “General” –&gt; “Disassmbly”</p>
+<p>将右侧的”Number of opcode bytes” 修改为一个非零数即可显示程序对应机器码</p>
+<p>“Edit” –&gt; “Patch Program” –&gt; “Assemble”</p>
+<p>输入相应汇编代码后确定显示对应机器码</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Harvey Lee</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=http://yoursite.com/2020/03/07/IDA-Pro-入门/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/03/07/IDA-Pro-入门/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=http://yoursite.com/2020/03/07/IDA-Pro-入门/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2020/04/06/%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%82%B8%E5%BC%B9/">
+        ← 二进制炸弹实验
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2019/12/07/Linux-to-go-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%E5%8F%8A%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">
+        Linux to go 安装指南及部分问题解决 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Idealist</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

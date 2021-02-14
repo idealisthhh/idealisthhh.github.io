@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>markdown基础语法 | Idealist</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Idealist">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/medias/7.jpg)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/medias/logo.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Idealist</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2018-11-17T07:52:00.000Z" itemprop="datePublished">
+          2018-11-17
+      </time>
+    
+</span>
+    <h1 class="post-title">markdown基础语法</h1>
+    <section class="post-content">
+      <p><em>作者: harveylee</em><br><em>Email: <a href="mailto:&#104;&#97;&#x72;&#118;&#x65;&#121;&#108;&#x65;&#x65;&#x68;&#x40;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;">&#104;&#97;&#x72;&#118;&#x65;&#121;&#108;&#x65;&#x65;&#x68;&#x40;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;</a></em><br><em>Github: harveyleeh</em><br><em>Website: harveyl.cn</em></p>
+<hr>
+<h1 id="Markdown基础语法"><a href="#Markdown基础语法" class="headerlink" title="Markdown基础语法"></a>Markdown基础语法</h1><p>Markdown是一种纯文本格式的标记语言。通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
+<h2 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h2><p>在文字前加上#号可以使该文字成为标题，#的数量代表标题的等级</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 这是一级标题</span></span><br><span class="line"><span class="section">## 这是二级标题</span></span><br><span class="line"><span class="section">### 这是三级标题</span></span><br><span class="line"><span class="section">#### 这是四级标题</span></span><br><span class="line"><span class="section">##### 这是五级标题</span></span><br><span class="line">……以此类推……</span><br></pre></td></tr></table></figure>
+<h2 id="二、字体格式"><a href="#二、字体格式" class="headerlink" title="二、字体格式"></a>二、字体格式</h2><ul>
+<li>加粗<br>在要加粗的文字前后分别用两个*号括起来。    <code>**加粗**</code><br>效果： <strong>加粗</strong></li>
+<li>斜体<br>在要倾斜的文字前后分别用一个*号括起来。    <code>*斜体*</code><br>效果： <em>斜体</em></li>
+<li>斜体加粗<br>在要倾斜和加粗的文字前后用三个*号括起来。   <code>***斜体加粗***</code><br>效果： <strong><em>斜体加粗</em></strong></li>
+<li>删除线<br>在要加删除线的文字前后分别用两个~号括起来。  <code>~~删除线~~</code><br>效果： <del>删除线</del></li>
+</ul>
+<h2 id="三、引用"><a href="#三、引用" class="headerlink" title="三、引用"></a>三、引用</h2><p>在被引用的文字前加&gt;号，可多次添加，表示嵌套。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;引用</span><br><span class="line">&gt;&gt;再引用</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;疯狂引用</span><br></pre></td></tr></table></figure>
+<p>效果如下  </p>
+<blockquote>
+<p>引用</p>
+<blockquote>
+<p>再引用</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>疯狂引用</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="四、分割线"><a href="#四、分割线" class="headerlink" title="四、分割线"></a>四、分割线</h2><p>三个- 或 * 即可</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="strong">**<span class="emphasis">*</span></span></span><br><span class="line"><span class="strong"><span class="emphasis">------</span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong">****</span><span class="strong">****</span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis">效果一样</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下  "></a>效果如下  </h2><hr>
+<hr>
+<hr>
+<h2 id="五、图片"><a href="#五、图片" class="headerlink" title="五、图片"></a>五、图片</h2><p>格式： <code>![下方title](图片地址 &#39;&#39;图片title&#39;&#39;)</code><br>示例    <code>![wlop](https://s2.snscz.com/img/1200/2019/07/05/00/0_ab2fd9c320.jpg &quot;wlop&quot;)</code><br><img src="https://s2.snscz.com/img/1200/2019/07/05/00/0_ab2fd9c320.jpg" alt="wlop" title="wlop"><br><strong><em>仅用于学习交流，侵权立删。</em></strong></p>
+<h2 id="六、超链接"><a href="#六、超链接" class="headerlink" title="六、超链接"></a>六、超链接</h2><p>格式： <code>[超链接名](超链接地址 &quot;title&quot;)</code><br>示例  <code>[baidu](https://baidu.com)</code><br><a target="_blank" rel="noopener" href="https://baidu.com/">baidu</a></p>
+<h2 id="七、列表"><a href="#七、列表" class="headerlink" title="七、列表"></a>七、列表</h2><ul>
+<li>无序列表<br>格式： 无序列表用-、+、*都可以<br>示例  </li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> 无序列表</span><br><span class="line"><span class="bullet">    +</span> 无序列表</span><br><span class="line"><span class="bullet">        *</span> 无序列表</span><br><span class="line"><span class="bullet">-</span> 无序列表</span><br><span class="line">中间要添加空格</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<ul>
+<li>无序列表<ul>
+<li>无序列表<ul>
+<li>无序列表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无序列表</li>
+</ul>
+<hr>
+<ul>
+<li>有序列表<br>格式： 有序列表用数字加点<br>示例</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 有序列表</span><br><span class="line"><span class="bullet">    1.</span> 有序列表</span><br><span class="line"><span class="bullet">        1.</span> 有序列表</span><br><span class="line"><span class="bullet">2.</span> 有序列表</span><br><span class="line">中间要添加空格</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<ol>
+<li>有序列表<ol>
+<li>有序列表<ol>
+<li>有序列表</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>有序列表</li>
+</ol>
+<hr>
+<ul>
+<li>嵌套列表<br>格式： 上方已展示，使用缩进</li>
+</ul>
+<h2 id="八、表格"><a href="#八、表格" class="headerlink" title="八、表格"></a>八、表格</h2><p>格式：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"></span><br><span class="line">第二行分割表头和内容。</span><br><span class="line"><span class="bullet">-</span> 有一个就行，为了对齐，多加了几个</span><br><span class="line">文字默认居左</span><br><span class="line">-两边加：表示文字居中</span><br><span class="line">-右边加：表示文字居右</span><br><span class="line">注：原生的语法两边都要用 | 包起来。此处省略</span><br></pre></td></tr></table></figure>
+<p>示例  </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">姓名|技能|排行</span><br><span class="line">--|:--:|--:</span><br><span class="line">刘备|哭|大哥</span><br><span class="line">关羽|打|二哥</span><br><span class="line">张飞|骂|三弟</span><br></pre></td></tr></table></figure>
+<p>效果如下：  </p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th align="center">技能</th>
+<th align="right">排行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>刘备</td>
+<td align="center">哭</td>
+<td align="right">大哥</td>
+</tr>
+<tr>
+<td>关羽</td>
+<td align="center">打</td>
+<td align="right">二哥</td>
+</tr>
+<tr>
+<td>张飞</td>
+<td align="center">骂</td>
+<td align="right">三弟</td>
+</tr>
+</tbody></table>
+<h2 id="九、代码"><a href="#九、代码" class="headerlink" title="九、代码"></a>九、代码</h2><p>格式：<br>单行代码  在代码前后各加一个`号<br><code> ``code``  </code>  由于转译问题 这里应该只有前后各一个`号<br>多行代码  在代码上下各加三个`号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">    code1</span></span><br><span class="line"><span class="code">    code2</span></span><br><span class="line"><span class="code">    code3</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## 十、流程图</span><br><span class="line">格式</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">op&#x3D;&gt;operation: My Operation</span><br><span class="line">cond&#x3D;&gt;condition: Yes or No?</span><br><span class="line">e&#x3D;&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;&#96;&#96;&#96;</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>部分编辑器不支持流程图</em></strong></p>
+<hr>
+<hr>
+<p><em>参考资料</em>     <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/191d1e21f7ed">简书</a>（<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/191d1e21f7ed">https://www.jianshu.com/p/191d1e21f7ed</a>)</p>
+<hr>
+<p><strong>谢谢阅读</strong></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Harvey Lee</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=http://yoursite.com/2018/11/17/markdown基础语法/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/11/17/markdown基础语法/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=http://yoursite.com/2018/11/17/markdown基础语法/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2019/10/07/Scrapy%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6/">
+        ← Scrapy爬虫框架
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2018/11/07/C-C-STL-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+        C/C++ STL 学习记录 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Idealist</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

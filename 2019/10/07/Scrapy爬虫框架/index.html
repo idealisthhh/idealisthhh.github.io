@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Scrapy爬虫框架 | Idealist</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Idealist">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/medias/7.jpg)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/medias/logo.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Idealist</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2019-10-07T07:52:00.000Z" itemprop="datePublished">
+          2019-10-07
+      </time>
+    
+</span>
+    <h1 class="post-title">Scrapy爬虫框架</h1>
+    <section class="post-content">
+      <p><em>作者: harveylee</em><br><em>Email: <a href="mailto:&#104;&#x61;&#x72;&#x76;&#x65;&#121;&#x6c;&#x65;&#x65;&#x68;&#x40;&#49;&#x36;&#51;&#x2e;&#99;&#111;&#109;">&#104;&#x61;&#x72;&#x76;&#x65;&#121;&#x6c;&#x65;&#x65;&#x68;&#x40;&#49;&#x36;&#51;&#x2e;&#99;&#111;&#109;</a></em><br><em>Github: harveyleeh</em><br><em>Website: harveyl.cn</em></p>
+<h1 id="Scrapy-爬虫框架"><a href="#Scrapy-爬虫框架" class="headerlink" title="Scrapy 爬虫框架"></a>Scrapy 爬虫框架</h1><p>Scrapy 是python的一个现在比较流行的一个爬虫框架，支持异步爬取。</p>
+<p><strong>我的环境</strong></p>
+<ol>
+<li>python version：3.8</li>
+<li>Pycharm 2019</li>
+<li>Scrapy version：1.8.0</li>
+</ol>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>通过pip命令安装：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; python -m pip install --upgrade pip</span><br><span class="line">&gt; pip install scrapy</span><br></pre></td></tr></table></figure>
+<p>可能出现安装不成功的情况，这时可以考虑离线安装。</p>
+<ol>
+<li>先到<a target="_blank" rel="noopener" href="https://scrapy.org/">官网</a>下载最新release</li>
+<li>然后到下载的文件夹中使用命令：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; pip install ***(filename).whl</span><br></pre></td></tr></table></figure>
+<p>这时应该就安装好了</p>
+<p><strong>可能还会遇到的问题是</strong>：</p>
+<p>​    当前twisted库与Windows不兼容，这时可以更新twisted库，具体到<a target="_blank" rel="noopener" href="https://www.lfd.uci.edu/~gohlke/pythonlibs/%E5%A4%84%E4%B8%8B%E8%BD%BD%EF%BC%8C%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F%E4%B8%8Escrapy%E7%B1%BB%E4%BC%BC%E3%80%82">https://www.lfd.uci.edu/~gohlke/pythonlibs/处下载，安装方式与scrapy类似。</a></p>
+<h2 id="Scrapy介绍"><a href="#Scrapy介绍" class="headerlink" title="Scrapy介绍"></a>Scrapy介绍</h2><h3 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h3><p>在cmd/powershell中键入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; scrapy startproject crawler</span><br></pre></td></tr></table></figure>
+<p>这时在当前目录下会生成crawler文件</p>
+<p>结构如下：</p>
+<p>E:.<br>│  items.py<br>│  middlewares.py<br>│  pipelines.py<br>│  settings.py<br>│  <strong>init</strong>.py<br>│<br>├─spiders<br>     └─ <strong>init</strong>.py</p>
+<p>接着输入命令</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; cd crawler</span><br><span class="line">&gt; scrapy genspider ucrawler url(由你自己输入)</span><br></pre></td></tr></table></figure>
+<p>此时在crawler文件夹下的spiders文件下便生成了一个ucrawler.py文件，该文件为你的爬虫的主要功能部分，分析读取到的response内容。</p>
+<h2 id="解析方法（Xpath）"><a href="#解析方法（Xpath）" class="headerlink" title="解析方法（Xpath）"></a>解析方法（Xpath）</h2><p>具体见网站：</p>
+<ul>
+<li>英文网站：<a target="_blank" rel="noopener" href="https://www.w3schools.com/xml/xpath_syntax.asp">https://www.w3schools.com/xml/xpath_syntax.asp</a></li>
+<li>中文网站：<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/xpath/index.asp">https://www.w3school.com.cn/xpath/index.asp</a></li>
+</ul>
+<h2 id="爬虫设置"><a href="#爬虫设置" class="headerlink" title="爬虫设置"></a>爬虫设置</h2><p>修改crawler文件夹中的settings.py文件，本项目使用到的项有：</p>
+<pre><code>1. header设置：
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USER_AGENT = <span class="string">&quot;Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36&quot;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>robots.txt文件检测：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROBOTSTXT_OBEY = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>线程设置：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The download delay setting will honor only one of:</span></span><br><span class="line">CONCURRENT_REQUESTS_PER_DOMAIN = <span class="number">16</span></span><br><span class="line"><span class="comment">#CONCURRENT_REQUESTS_PER_IP = 16</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>延时设置：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DOWNLOAD_DELAY = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h2 id="启动爬虫"><a href="#启动爬虫" class="headerlink" title="启动爬虫"></a>启动爬虫</h2><p>在项目根目录下打开cmd/powershell，输入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; scrapy crawl crwaler(你的爬虫名称)</span><br></pre></td></tr></table></figure>
+
+
+<p>具体介绍到这就完了，谢谢阅读。</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Harvey Lee</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=http://yoursite.com/2019/10/07/Scrapy爬虫框架/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/10/07/Scrapy爬虫框架/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=http://yoursite.com/2019/10/07/Scrapy爬虫框架/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2019/11/07/%E4%B8%89%E7%A7%8D%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/">
+        ← 三种标记语言
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2018/11/17/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+        markdown基础语法 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Idealist</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>
