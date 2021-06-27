@@ -1,275 +1,66 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+extends widget/base
+block append head
+  link(rel='stylesheet', href= url_for('/style/post.css'))
+  link(rel='stylesheet', href= url_for('/style/themes/highlight-theme-light.css'))
+  script(src= url_for("/js/highlight.pack.js"))
+  meta(name="description", content=truncate( strip_html(page.content), {length: 360, omission: '..'} ))
+  if theme.comment_valine && theme.comment_valine.enable
+      script(src="//unpkg.com/valine/dist/Valine.min.js")
+block topic
+    div#postTopic.is-full-height
+        - var title = truncate( page.title, {length: 65, omission: '..'} ) || ''
+        p.is-full-height.is-flex-shrink-0.is-flex.is-align-items-center.is-justify-content-center= title
+        p.is-full-height.is-flex-shrink-0.is-flex.is-align-items-center.is-justify-content-center= __('click_back_to_the_top')
 
-  
-  <title>Linux to go 安装指南及部分问题解决 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Ubuntu安装历程及所遇到的问题记录(N卡) 安装方式：U盘启动器 所用载体：128G移动固态硬盘 安装版本：18.04(LTS) 电脑型号：机械革命Z2(Nvidia显卡)  安装前设置 将固态格式化为ext4格式，大小选择4096字节。(所谓的4k对齐) (推荐软件：DiskGenius)  分区：分出三个分区（我的分配方案，8g+60g+50g）  进入BIOS，将 security bo">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Linux to go 安装指南及部分问题解决">
-<meta property="og:url" content="http://harveyl.cn/2019/12/07/Linux-to-go-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%E5%8F%8A%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Ubuntu安装历程及所遇到的问题记录(N卡) 安装方式：U盘启动器 所用载体：128G移动固态硬盘 安装版本：18.04(LTS) 电脑型号：机械革命Z2(Nvidia显卡)  安装前设置 将固态格式化为ext4格式，大小选择4096字节。(所谓的4k对齐) (推荐软件：DiskGenius)  分区：分出三个分区（我的分配方案，8g+60g+50g）  进入BIOS，将 security bo">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-07T07:52:00.000Z">
-<meta property="article:modified_time" content="2020-08-13T14:38:40.000Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://harveyl.cn"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-Linux-to-go-安装指南及部分问题解决" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/07/Linux-to-go-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%E5%8F%8A%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="article-date">
-  <time datetime="2019-12-07T07:52:00.000Z" itemprop="datePublished">2019-12-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Linux to go 安装指南及部分问题解决
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Ubuntu安装历程及所遇到的问题记录-N卡"><a href="#Ubuntu安装历程及所遇到的问题记录-N卡" class="headerlink" title="Ubuntu安装历程及所遇到的问题记录(N卡)"></a>Ubuntu安装历程及所遇到的问题记录(N卡)</h1><ul>
-<li>安装方式：U盘启动器</li>
-<li>所用载体：128G移动固态硬盘</li>
-<li>安装版本：18.04(LTS)</li>
-<li>电脑型号：机械革命Z2(Nvidia显卡)</li>
-</ul>
-<h2 id="安装前设置"><a href="#安装前设置" class="headerlink" title="安装前设置"></a>安装前设置</h2><ol>
-<li><p>将固态格式化为ext4格式，大小选择4096字节。(所谓的4k对齐) (推荐软件：DiskGenius)</p>
-</li>
-<li><p>分区：分出三个分区（我的分配方案，8g+60g+50g）</p>
-</li>
-<li><p>进入BIOS，将 <em>security boot</em> 改为[false]</p>
-</li>
-<li><p>设置Root，将 <em>UEFI USB DISK</em> 项（指向你的U盘）放到第一，将<em>UEFI HDD WINDOWS</em> 项置后，防止其优先启动。</p>
-</li>
-<li><p>保存退出。</p>
-</li>
-</ol>
-<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><ol>
-<li><p>由于有独显（N卡）存在，直接选择 <em>Install Ubuntu</em> 项会有驱动未安装导致界面卡住的问题。应将光标指向 “Install Ubuntu” 项（<strong>切勿选择</strong>），然后按 ‘e’ 键。在出现的界面中找到 <em>quiet splash</em>，将其改为 <em>nomodeset</em>，之后按 <em>F10</em> 进入安装。</p>
-</li>
-<li><p>根据需要选择语言和键盘分布等，到”<strong>安装选项</strong>“项时又要注意的地方。</p>
-</li>
-<li><p>当安装进程达到”安装选项”时，选择其他选项，点击 <em>继续</em>。</p>
-</li>
-<li><p>关键部分<strong>分区</strong>，在栏中找到<em>空闲</em>项，将8g分区用于swap分区；将60g分区用于ext4日志文件系统，挂载于/分区；将50g分区用于ext4日志文件系统，挂载于/home分区。安装启动引导器的设备选择为<em><strong>该移动固态硬盘</strong></em>。点击 <em>现在安装</em>。（若界面中没有该选项，可按住 <em>windows</em> 键用鼠标拖动屏幕）</p>
-</li>
-<li><p>跟着流程安装，安装完后需要重启，在重启过程中要<strong>拔掉U盘</strong>，同时<strong>狂按 <em>F10</em></strong>。(注：其他机器可能不是F10键，但是一定要进入grub菜单中)</p>
-</li>
-</ol>
-<h2 id="安装结束后"><a href="#安装结束后" class="headerlink" title="安装结束后"></a>安装结束后</h2><ol>
-<li><p>进入以后，选择Ubuntu选项。之后会有紫框，光标指向 <em>Ubuntu</em>(<strong>切勿选择</strong>)，然后按 <em>e</em> 键，在出来的界面中找到 <em>quiet splash</em>，在其后添加 <em>acpi_osi=Linux nomodeset</em>，按 <em>F10</em> 键进入。</p>
-</li>
-<li><p>换源：<br>在终端中输入 sudo gedit(也可选择vim) /etc/apt/sources.list</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit(也可选择vim) /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;&emsp;清空该文件，然后写入以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;&emsp;保持退出，然后在终端中输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>安装驱动<br>在终端中输入</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ubuntu-drivers devices</span><br><span class="line"></span><br><span class="line">$ sudo ubuntu-drivers autoinstall</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;&emsp;安装完成后应用程序菜单中会出现Nvidia的logo，这时安装完成。</p>
-<ol start="4">
-<li>重启，进入grub菜单，选择Ubuntu，之后便可直接进入，至此安装基本结束。</li>
-</ol>
-<hr>
-<p>后续将记录美化历程和性能优化过程。</p>
-<hr>
-<p>参考资料：<br>1）<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36982160/article/details/78393328">https://blog.csdn.net/qq_36982160/article/details/78393328</a> （安装时显卡问题）<br>2）<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37935670/article/details/80377196">https://blog.csdn.net/qq_37935670/article/details/80377196</a>  （显卡驱动问题）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://harveyl.cn/2019/12/07/Linux-to-go-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%E5%8F%8A%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" data-id="ckqfdaubr00058gvi3epc5bbr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/03/07/IDA-Pro-%E5%85%A5%E9%97%A8/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          IDA Pro 入门
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/11/07/%E4%B8%89%E7%A7%8D%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">三种标记语言</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/06/27/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/27/%E6%AD%8C%E8%AF%8D%E6%91%98%E6%8A%84/">歌词摘抄</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/06/2021%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/">2021美赛总结</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/05/K8s%20%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">K8s 基础概念</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/17/2020-%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/">2020 美赛总结</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2021 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+block content
+    - var tocContent = toc(page.content, {list_number: false})
+    main.container.is-max-widescreen.content.section.post-page.pt-4.px-4
+        .columns.is-flex-desktop.is-justify-content-center.is-flex-direction-row-reverse
+            .column.is-3.is-hidden-mobile(class= tocContent.length < 1 && 'is-hidden')!= tocContent
+            .column.is-9
+                header.my-4
+                    if page.tags && page.tags.length > 0
+                        each tag in page.tags.toArray()
+                            a(href= url_for(`/tags/${tag.name}`))
+                                i.tag.post-item-tag= tag.name
+                h1.mt-0.mb-1.is-family-serif#postTitle= page.title
+                if page.date
+                    time.has-text-grey(datetime=page.date.toJSON())= date(page.date, date_format)
+                article.mt-2.post-content!= page.content
+                section.jump-container.is-flex.is-justify-content-space-between.my-6
+                    // em is empty placeholder
+                    if page.prev
+                        - var preContent= `${ __('prev') }: ${ page.prev.title }`
+                        a.button.is-default(href= url_for(page.prev.path) title= page.prev.title)
+                            i.iconfont.icon-prev.mr-2.has-text-grey
+                            span.has-text-weight-semibold= preContent
+                    else
+                        em
+                    if page.next
+                        - var nextContent= `${ __('next') }: ${ page.next.title }`
+                        a.button.is-default(href= url_for(page.next.path) title= page.next.title)
+                            span.has-text-weight-semibold= nextContent
+                            i.iconfont.icon-next.ml-2.has-text-grey
+                if theme.comment_utteranc && theme.comment_utteranc.enable
+                    article.mt-6.comment-container
+                        script(
+                            async
+                            repo= theme.comment_utteranc.repo
+                            src= "https://utteranc.es/client.js"
+                            label= theme.comment_utteranc.label
+                            issue-term= theme.comment_utteranc.issue_term || "pathname"
+                            theme= theme.comment_utteranc.theme || "preferred-color-scheme"
+                        )
+                if theme.comment_valine && theme.comment_valine.enable
+                    article.mt-6.comment-container#vcomments(
+                        data-comment_valine_id= theme.comment_valine.appId
+                        data-comment_valine_key= theme.comment_valine.appKey
+                    )
+                if theme.comment_disqus && theme.comment_disqus.enable
+                    div#disqus_thread
+                    article.mt-6.comment-container#disqus
+                        script="var disqus_config = function () {this.page.url = '"+theme.comment_disqus.url+url_for(page.path)+"';this.page.identifier = '"+theme.comment_disqus.name+"';};"
+                        script="(function() {var d = document, s = d.createElement('script');s.src = 'https://"+theme.comment_disqus.name+".disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);})();"
+                        script(id="dsq-count-scr", src="//blog-pubgj2togw.disqus.com/count.js", async)
+block script
+    script(src= url_for("/js/post.js"))
