@@ -1,66 +1,237 @@
-extends widget/base
-block append head
-  link(rel='stylesheet', href= url_for('/style/post.css'))
-  link(rel='stylesheet', href= url_for('/style/themes/highlight-theme-light.css'))
-  script(src= url_for("/js/highlight.pack.js"))
-  meta(name="description", content=truncate( strip_html(page.content), {length: 360, omission: '..'} ))
-  if theme.comment_valine && theme.comment_valine.enable
-      script(src="//unpkg.com/valine/dist/Valine.min.js")
-block topic
-    div#postTopic.is-full-height
-        - var title = truncate( page.title, {length: 65, omission: '..'} ) || ''
-        p.is-full-height.is-flex-shrink-0.is-flex.is-align-items-center.is-justify-content-center= title
-        p.is-full-height.is-flex-shrink-0.is-flex.is-align-items-center.is-justify-content-center= __('click_back_to_the_top')
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
-block content
-    - var tocContent = toc(page.content, {list_number: false})
-    main.container.is-max-widescreen.content.section.post-page.pt-4.px-4
-        .columns.is-flex-desktop.is-justify-content-center.is-flex-direction-row-reverse
-            .column.is-3.is-hidden-mobile(class= tocContent.length < 1 && 'is-hidden')!= tocContent
-            .column.is-9
-                header.my-4
-                    if page.tags && page.tags.length > 0
-                        each tag in page.tags.toArray()
-                            a(href= url_for(`/tags/${tag.name}`))
-                                i.tag.post-item-tag= tag.name
-                h1.mt-0.mb-1.is-family-serif#postTitle= page.title
-                if page.date
-                    time.has-text-grey(datetime=page.date.toJSON())= date(page.date, date_format)
-                article.mt-2.post-content!= page.content
-                section.jump-container.is-flex.is-justify-content-space-between.my-6
-                    // em is empty placeholder
-                    if page.prev
-                        - var preContent= `${ __('prev') }: ${ page.prev.title }`
-                        a.button.is-default(href= url_for(page.prev.path) title= page.prev.title)
-                            i.iconfont.icon-prev.mr-2.has-text-grey
-                            span.has-text-weight-semibold= preContent
-                    else
-                        em
-                    if page.next
-                        - var nextContent= `${ __('next') }: ${ page.next.title }`
-                        a.button.is-default(href= url_for(page.next.path) title= page.next.title)
-                            span.has-text-weight-semibold= nextContent
-                            i.iconfont.icon-next.ml-2.has-text-grey
-                if theme.comment_utteranc && theme.comment_utteranc.enable
-                    article.mt-6.comment-container
-                        script(
-                            async
-                            repo= theme.comment_utteranc.repo
-                            src= "https://utteranc.es/client.js"
-                            label= theme.comment_utteranc.label
-                            issue-term= theme.comment_utteranc.issue_term || "pathname"
-                            theme= theme.comment_utteranc.theme || "preferred-color-scheme"
-                        )
-                if theme.comment_valine && theme.comment_valine.enable
-                    article.mt-6.comment-container#vcomments(
-                        data-comment_valine_id= theme.comment_valine.appId
-                        data-comment_valine_key= theme.comment_valine.appKey
-                    )
-                if theme.comment_disqus && theme.comment_disqus.enable
-                    div#disqus_thread
-                    article.mt-6.comment-container#disqus
-                        script="var disqus_config = function () {this.page.url = '"+theme.comment_disqus.url+url_for(page.path)+"';this.page.identifier = '"+theme.comment_disqus.name+"';};"
-                        script="(function() {var d = document, s = d.createElement('script');s.src = 'https://"+theme.comment_disqus.name+".disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);})();"
-                        script(id="dsq-count-scr", src="//blog-pubgj2togw.disqus.com/count.js", async)
-block script
-    script(src= url_for("/js/post.js"))
+  
+  <title>C/C++ STL 学习记录 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="作者: harveyleeEmail: &amp;#x68;&amp;#x61;&amp;#x72;&amp;#118;&amp;#101;&amp;#121;&amp;#x6c;&amp;#x65;&amp;#101;&amp;#104;&amp;#64;&amp;#49;&amp;#x36;&amp;#51;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#x6d;Github: harveyleehWebsite: harveyl.cn  STL(Standard Template Library)C++标准模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C&#x2F;C++ STL 学习记录">
+<meta property="og:url" content="http://harveyl.cn/2018/11/07/C-C-STL-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="作者: harveyleeEmail: &amp;#x68;&amp;#x61;&amp;#x72;&amp;#118;&amp;#101;&amp;#121;&amp;#x6c;&amp;#x65;&amp;#101;&amp;#104;&amp;#64;&amp;#49;&amp;#x36;&amp;#51;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#x6d;Github: harveyleehWebsite: harveyl.cn  STL(Standard Template Library)C++标准模">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-11-07T07:52:00.000Z">
+<meta property="article:modified_time" content="2020-08-13T14:38:12.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://harveyl.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-C-C-STL-学习记录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/07/C-C-STL-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time datetime="2018-11-07T07:52:00.000Z" itemprop="datePublished">2018-11-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C/C++ STL 学习记录
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>作者: harveylee</em><br><em>Email: <a href="mailto:&#x68;&#x61;&#x72;&#118;&#101;&#121;&#x6c;&#x65;&#101;&#104;&#64;&#49;&#x36;&#51;&#x2e;&#x63;&#x6f;&#x6d;">&#x68;&#x61;&#x72;&#118;&#101;&#121;&#x6c;&#x65;&#101;&#104;&#64;&#49;&#x36;&#51;&#x2e;&#x63;&#x6f;&#x6d;</a></em><br><em>Github: harveyleeh</em><br><em>Website: harveyl.cn</em></p>
+<hr>
+<h1 id="STL-Standard-Template-Library"><a href="#STL-Standard-Template-Library" class="headerlink" title="STL(Standard Template Library)"></a>STL(Standard Template Library)</h1><p>C++标准模板库，包括：<em>string</em>、<em>vector</em>、<em>set</em>、<em>map</em>、<em>stack</em>、<em>queue</em>等。</p>
+<h2 id="string"><a href="#string" class="headerlink" title="string"></a><em><strong>string</strong></em></h2><p>string 对象的初始化：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string s1 = <span class="string">&quot;holy shoot&quot;</span>;</span><br><span class="line"><span class="function">string <span class="title">s2</span><span class="params">(s1)</span></span>;</span><br><span class="line">string s3 = s1;</span><br><span class="line"><span class="function">string <span class="title">s4</span><span class="params">(<span class="string">&quot;godness&quot;</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>string 对象支持算术运算符 *+*，比如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string s5 = s2 + <span class="string">&#x27; &#x27;</span> + s4;</span><br></pre></td></tr></table></figure>
+
+<p>函数支持：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>&gt;. s.<span class="built_in">empty</span>()                       <span class="comment">// 判断s是否为空串</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>&gt;. s.<span class="built_in">size</span>()                        <span class="comment">// 获得s的长度，返回s中的字符个数(类型:string::size_type)</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>&gt;. s.<span class="built_in">insert</span>(p,t)                   <span class="comment">// 在迭代器p指向的元素之前插入一个值为t的新元素。返回指向新插入元素的迭代器</span></span><br><span class="line">    s.<span class="built_in">insert</span>(p,n,t)                 <span class="comment">// 在迭代器p指向的元素之前插入n个值为t的新元素。返回void</span></span><br><span class="line">    s.<span class="built_in">insert</span>(p,b,e)                 <span class="comment">// 在迭代器p指向的元素之前插入b和e标记范围内所有的元素，返回void</span></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>&gt;. s.<span class="built_in">assign</span>(b,e)                   <span class="comment">// 用迭代器b和e标记范围内的元素替换s。对于string对象，该操作返回s，对于容器类型，则返回void</span></span><br><span class="line">    s.<span class="built_in">assign</span>(n,t)                   <span class="comment">// 用值为t的n个副本替换s。对于string对象，该操作返回s，对于容器类型，返回void</span></span><br><span class="line"></span><br><span class="line"><span class="number">5</span>&gt;. s.<span class="built_in">erase</span>(p)                      <span class="comment">// 删除迭代器p指向的元素，返回一个迭代器，指向被删除元素后面的元素</span></span><br><span class="line">    s.<span class="built_in">erase</span>(b,e)                    <span class="comment">// 删除迭代器b和e标记范围内所有的元素，返回一个迭代器，指向被删除元素段后面的第一个元素</span></span><br><span class="line"></span><br><span class="line"><span class="number">6</span>&gt;. <span class="built_in">reverse</span>(b,e)                    <span class="comment">// 把迭代器b和e标记范围内的所有元素反转</span></span><br><span class="line"></span><br><span class="line"><span class="number">7</span>&gt;. s.<span class="built_in">substr</span>(pos,n)                 <span class="comment">// 返回一个string对象的字符串，它包含s中从下标pos开始的n个字符</span></span><br><span class="line">    s.<span class="built_in">substr</span>(pos)                   <span class="comment">// 返回一个string对象的字符串，它包含从下标pos开始到s末为的所有字符</span></span><br><span class="line">    s.<span class="built_in">substr</span>()                      <span class="comment">// 返回s的副本</span></span><br><span class="line"></span><br><span class="line"><span class="number">8</span>&gt;. s.<span class="built_in">append</span>(args)                  <span class="comment">// 将args串接在s后面。返回s的引用</span></span><br><span class="line">    s.<span class="built_in">replace</span>(pos,len,args)         <span class="comment">// 删除s中从下标pos开始的len个字符，用args指定的字符替换，返回s的引用(这个版本中，args不能为b2,e2:迭代器)</span></span><br><span class="line">    s.<span class="built_in">replace</span>(b,e,args)             <span class="comment">// 删除迭代器b和e标记的范围内所有的字符，用args代替之。返回s的引用(这个版本中，args不能为 s1,pos2,len2)</span></span><br><span class="line"></span><br><span class="line"><span class="number">9</span>&gt;. s.<span class="built_in">find</span>(args)                    <span class="comment">// 在s中查找args的第一次出现</span></span><br><span class="line">    s.<span class="built_in">rfind</span>(args)                   <span class="comment">// 在s中查找args的最后一次出现</span></span><br><span class="line">    s.<span class="built_in">find_first_of</span>(args)           <span class="comment">// 在s中查args的任意字符的第一次出现</span></span><br><span class="line">    s.<span class="built_in">find_last_of</span>(args             <span class="comment">// 在s中查找args的任意字符的最后一次出现</span></span><br><span class="line">    s.<span class="built_in">find_first_not_of</span>(args)       <span class="comment">// 在s中查找第一个不属于args的字符</span></span><br><span class="line">    s.<span class="built_in">find_last_not_of</span>(args)        <span class="comment">// 在s中查找最后一个不属于args的字符</span></span><br><span class="line"></span><br><span class="line"><span class="number">10</span>&gt;. s.<span class="built_in">compare</span>(s2)                  <span class="comment">// 比较s和s2 返回值：大为正数小为负数相等为零</span></span><br><span class="line">     s.<span class="built_in">compare</span>(pos1,n1,s2)</span><br><span class="line">     s.<span class="built_in">compare</span>(pos1,n1,s2,pos2,n2)  <span class="comment">// 让s中从pos1下标位置开始的n1个字符与s2中从pos2下标位置开始的n2个字符做比较</span></span><br><span class="line">     s.<span class="built_in">compare</span>(cp)                  <span class="comment">// 比较s和cp所指向的以空字符结束的字符串</span></span><br><span class="line">     s.<span class="built_in">compare</span>(pos1,n1,cp)</span><br><span class="line">     s.<span class="built_in">compare</span>(pos1,n1,cp,n2)       <span class="comment">// 让s中从pos1下标位置开始的n1个字符与cp所指向字符串的前n2个字符做比较</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注：两个字符字面量相加是非法的</strong>，情况包括但不限于: </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string t = s1 + <span class="string">&quot;,&quot;</span> + <span class="string">&quot;world&quot;</span>; <span class="comment">// 非法</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a><em><strong>vector</strong></em></h2><p>vector 对象的初始化：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>&#125;;</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; a&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(<span class="number">5</span>, <span class="number">1</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>vector 对象 <strong>不支持</strong> + 运算符。  </p>
+<p>函数支持：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>&gt;. a.<span class="built_in">size</span>()                        <span class="comment">//获得a的元素个数</span></span><br><span class="line">    a.<span class="built_in">capacity</span>()                    <span class="comment">//获得a的内存空间</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>&gt;. a.<span class="built_in">empty</span>()                       <span class="comment">//判断a是否为空</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>&gt;. a.<span class="built_in">clear</span>()                       <span class="comment">//清空a中的元素，但保留内存空间</span></span><br><span class="line">    a.<span class="built_in">erase</span>(i)                      <span class="comment">//删除i位置处的元素</span></span><br><span class="line">    a.<span class="built_in">erase</span>(i, j)                   <span class="comment">//删除位置i-j间的元素</span></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>&gt;. a.<span class="built_in">push_back</span>(i)                  <span class="comment">//在a的末尾添加一个值为i的数据</span></span><br><span class="line">    a.<span class="built_in">pop_back</span>()                    <span class="comment">//去掉a末尾的一个元素</span></span><br><span class="line"></span><br><span class="line"><span class="number">5</span>&gt;. a.<span class="built_in">resize</span>()                      <span class="comment">//重新为a分配可使用的数据大小</span></span><br><span class="line">    a.<span class="built_in">reserve</span>()                     <span class="comment">//重新为a分配内存空间大小</span></span><br><span class="line">    </span><br><span class="line"><span class="number">6</span>&gt;. a.<span class="built_in">swap</span>(b)                       <span class="comment">//向量a和b交换数据</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>谢谢阅读</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harveyl.cn/2018/11/07/C-C-STL-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" data-id="ckqfdaubq00038gvi3slcd1uo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/17/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          markdown基础语法
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/27/%E6%AD%8C%E8%AF%8D%E6%91%98%E6%8A%84/">歌词摘抄</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/06/2021%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/">2021美赛总结</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/05/K8s%20%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">K8s 基础概念</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/17/2020-%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/">2020 美赛总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

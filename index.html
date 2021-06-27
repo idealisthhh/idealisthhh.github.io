@@ -1,19 +1,792 @@
-extends widget/base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
-block append head
-    link(rel='stylesheet', href= url_for("/style/widget-post-list.css"))
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://harveyl.cn/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-block content
-    include widget/widget-post-list
-        block sidebar
-            include widget/widget-search
-            if theme.widgets.includes('profile')
-                include widget/widget-profile
-            if theme.widgets.includes('recent_posts')
-                include widget/widget-recent
-            if theme.widgets.includes('category') && site.categories.length > 0
-                include widget/widget-categories
-            if theme.widgets.includes('archive')
-                include widget/widget-archives
-            if theme.widgets.includes('tag') && site.tags.length > 0
-                include widget/widget-tag
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://harveyl.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/06/27/hello-world/" class="article-date">
+  <time datetime="2021-06-27T15:34:37.441Z" itemprop="datePublished">2021-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/27/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harveyl.cn/2021/06/27/hello-world/" data-id="ckqfcwhd000007svif5xse4n1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-歌词摘抄" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/06/27/%E6%AD%8C%E8%AF%8D%E6%91%98%E6%8A%84/" class="article-date">
+  <time datetime="2021-06-27T15:24:04.215Z" itemprop="datePublished">2021-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/27/%E6%AD%8C%E8%AF%8D%E6%91%98%E6%8A%84/">歌词摘抄</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>想回到过去</p>
+<p>试着让故事继续</p>
+<p>至少不再让你离我而去    </p>
+<p align="right">——周杰伦《回到过去》</p>    
+
+<p>还是听妈妈的话吧</p>
+<p>晚点再恋爱吧</p>
+<p>我知道你未来的路</p>
+<p>但妈比我更清楚</p>
+<p align="right">——周杰伦《听妈妈的话》</p>
+
+<p>在只有凌晨才不会太拥挤的城市</p>
+<p>我披星戴月独自前行</p>
+<p>窗外的一点一滴在此时此刻</p>
+<p>才没那么急功近利</p>
+<p align="right">——齐一《生命中的时光》</p>
+
+<p>不知不觉孤独不再可耻了</p>
+<p>不知不觉爸爸的情绪变得脆弱了</p>
+<p align="right">——齐一《这个年纪》</p>
+
+<p>左手的泥呀 右手的泥呀</p>
+<p>知己的花衣裳</p>
+<p>世界本该是你醒来的模样</p>
+<p align="right">——杨乃文《推开世界的门》</p>
+
+<p>再见了妈妈 今晚我就要远航</p>
+<p>别为我担心</p>
+<p>我有快乐和智慧的桨</p>
+<p>当你醒来千万别告诉别人</p>
+<p>我正摇着月亮船在银河上远航</p>
+<p align="right">——王英姿《月亮船》</p>
+
+<p>对了 我听闻宝岛常有台风肆虐</p>
+<p>你可要照顾自己多些</p>
+<p>别天冷不知觉</p>
+<p>被风吹跑回我身边</p>
+<p>那我可是百般不会放你走的</p>
+<p align="right">——法老《亲密爱人2017》</p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harveyl.cn/2021/06/27/%E6%AD%8C%E8%AF%8D%E6%91%98%E6%8A%84/" data-id="ckqfdaubv000a8gvi2j2x1nmn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021美赛总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/06/06/2021%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2021-06-06T14:47:09.000Z" itemprop="datePublished">2021-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/06/2021%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/">2021美赛总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="2021-美国数学建模竞赛赛后总结"><a href="#2021-美国数学建模竞赛赛后总结" class="headerlink" title="2021 美国数学建模竞赛赛后总结"></a>2021 美国数学建模竞赛赛后总结</h1><p>美赛各奖项获奖比例如下：O—特等奖，比例为总选手人数0.5% ;F—特等奖候选提名，比例为总选手人数1% ;M—一等奖，比例为总选手人数13%;H—二等奖，比例为总选手人数30%</p>
+<h2 id="题目-D题"><a href="#题目-D题" class="headerlink" title="题目 D题"></a>题目 D题</h2><p><img src="https://nimg.ws.126.net/?url=http://dingyue.ws.126.net/2021/0221/82e71687j00qovs3z007zd200u001bqg00gl00qd.jpg&thumbnail=650x2147483647&quality=80&type=jpg" alt="img"></p>
+<p><img src="https://nimg.ws.126.net/?url=http://dingyue.ws.126.net/2021/0221/9e7268d6j00qovs3z009nd200u001bqg00gl00qd.jpg&thumbnail=650x2147483647&quality=80&type=jpg" alt="img"></p>
+<p><img src="https://nimg.ws.126.net/?url=http://dingyue.ws.126.net/2021/0221/aff110b6j00qovs40008nd200u001bqg00gl00qd.jpg&thumbnail=650x2147483647&quality=80&type=jpg" alt="img"></p>
+<p><img src="https://nimg.ws.126.net/?url=http://dingyue.ws.126.net/2021/0221/74b29dd5j00qovs40008ed200u0014lg00du00ip.jpg&thumbnail=650x2147483647&quality=80&type=jpg" alt="img"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harveyl.cn/2021/06/06/2021%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/" data-id="ckqfdaubo00018gvi3odcc2y6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-K8s 基础概念" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/05/K8s%20%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="article-date">
+  <time datetime="2020-08-05T07:32:31.000Z" itemprop="datePublished">2020-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/K8s%20%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">K8s 基础概念</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="K8s-基础概念"><a href="#K8s-基础概念" class="headerlink" title="K8s 基础概念"></a>K8s 基础概念</h1><p>参考文章：<a target="_blank" rel="noopener" href="https://www.infoq.cn/article/KNMAVdo3jXs3qPKqTZBw">https://www.infoq.cn/article/KNMAVdo3jXs3qPKqTZBw</a></p>
+<h2 id="一、What-is-Kubernetes"><a href="#一、What-is-Kubernetes" class="headerlink" title="一、What is Kubernetes"></a>一、What is Kubernetes</h2><p>Kubernetes 的英文原意是 ”舵手“，container 的原意是 ”容器、集装箱“。我很喜欢参考文章中的比喻——如果说 container 是轮船上的集装箱，那么 Kubernetes 就是管理这些 container的智能化的轮船 。</p>
+<h2 id="二、核心功能"><a href="#二、核心功能" class="headerlink" title="二、核心功能"></a>二、核心功能</h2><ol>
+<li><p><strong>服务的发现与负载的均衡</strong></p>
+<p>Kubernetes 具有业务负载检查的能力，它会检测业务的负载，如果某业务本身的 CPU 利用率过高或响应时间太长，K8s 可以对该业务进行扩容。</p>
+</li>
+<li><p><strong>scheduling，container 的自动装箱，由 K8s来做存储的编排，同时连接存储和容器的生命周期</strong></p>
+<p>Kubernetes 可以把用户提交的容器放到 K8s 管理的集群的某一个台节点上。K8s 会在集群中找一台相对空闲的机器来放置该容器。</p>
+</li>
+<li><p><strong>自动化 container 的恢复</strong></p>
+<p>Kubernetes 具有节点健康检测功能，它会检测宿主机并自动发现出故障的宿主机或软件。同时 K8s 还会把运行在失败节点的容器进行自动迁移，迁移到一个正在健康运行的宿主机上，来完成集群的一个自动恢复。</p>
+</li>
+<li><p><strong>应用的自动发布和回滚，以及应用相关的配置密文的管理</strong></p>
+</li>
+<li><p><strong>批量执行 job 类型任务</strong></p>
+</li>
+</ol>
+<h2 id="三、Kubernetes-的基础架构"><a href="#三、Kubernetes-的基础架构" class="headerlink" title="三、Kubernetes 的基础架构"></a>三、Kubernetes 的基础架构</h2><p>典型的二层架构和 server-client 架构。其中 Master 为中央的管控节点，连接 Node 。</p>
+<p>而用户只能通过 UI 、CLI 这些组件和 Master 进行连接，把命令或状态下发给 Master，Master接着将命令或状态下发给节点，实现最终的执行。</p>
+<img src="E:\University\实习\K8S架构.png" style="zoom:35%;" />
+
+<h3 id="Master-架构"><a href="#Master-架构" class="headerlink" title="Master 架构"></a>Master 架构</h3><ul>
+<li><strong>API Server:</strong> Kubernetes 中的所有组件都和该组件相连接。组件和组件之间不会有单独的连接存在。</li>
+<li><strong>Controller:</strong> 该组件用来实现对集群状态的一些管理。上文提到的 1、3 号功能都是由该组件实现的。</li>
+<li><strong>Scheduler:</strong> 调度器。功能 2 的实现依赖该组件。</li>
+<li><strong>ectd:</strong> 一个分布式的存储系统。其中放置着 API Server 需要的原信息。ectd 自身是一个高可用的系统，通过该系统保证了 Kubernetes 的 Master 组件的高可用性。</li>
+</ul>
+<h3 id="Node-架构"><a href="#Node-架构" class="headerlink" title="Node 架构"></a>Node 架构</h3><ul>
+<li><strong>Storage Plugin:</strong> 存储操作依赖该插件。</li>
+<li><strong>Network Plugin:</strong> 网络操作所依赖的插件。</li>
+<li><strong>Kube-proxy:</strong> 真正完成 server 组网的组件。</li>
+</ul>
+<h3 id="组件间关联例子"><a href="#组件间关联例子" class="headerlink" title="组件间关联例子"></a>组件间关联例子</h3><p>用户通过 UI 或 CLI 提交一个 Pod 给 Kubernetes 进行部署：</p>
+<ol>
+<li>Pod 请求通过 UI 或 CLI 提交给 Kubernetes API Server</li>
+<li>API Server 将该信息写入它的存储系统 etcd 中</li>
+<li>Scheduler 组件通过 API Server 的 watch (notification) 机制得到信息: “有个 Pod 需要被调度”。</li>
+<li>Scheduler 在完成这次调度后会向 API Server 反馈: “这个 Pod 需要被调度到某个节点上”。</li>
+<li>API Server 接收到这次操作后，将这次结果写到 etcd 中，同时通知相应节点<strong>真正</strong>执行启动此次Pod。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harveyl.cn/2020/08/05/K8s%20%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" data-id="ckqfdaubr00048gvihhgc1bwz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-美赛总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/17/2020-%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2020-04-17T07:52:00.000Z" itemprop="datePublished">2020-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/17/2020-%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/">2020 美赛总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="2020-美国数学建模竞赛赛后总结"><a href="#2020-美国数学建模竞赛赛后总结" class="headerlink" title="2020 美国数学建模竞赛赛后总结"></a>2020 美国数学建模竞赛赛后总结</h1><p>今年的美赛由于疫情的影响，特别的划分为了两周，我们小组参加的是第二周的比赛，选题有B，C，F三个。</p>
+<h2 id="选题"><a href="#选题" class="headerlink" title="选题"></a>选题</h2><p>在准备阶段时，我们组是打算主攻B题，所以在比赛时就直接选择了B题。但在对题目进行了近一天的分析后，发现这道题和前几年的B题不太一样，这次的B题需要的工科基础过于专业，需要结构力学方面的知识（在我们组的判断下认为），不在我们组的能力范围内，所以我们组选择了临时换题。换到了C题。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在亚马逊创建的在线市场中，它为客户提供了评估和回顾他们订单的机会。个人评级-称为“星级” –购买者可以使用1（低评分，低满意度）到5（高评分,高满意度）来表达自己的想法。此外，客户可以提交文本的消息，称为“评论” –表达有关产品的更多意见和信息。其他顾客可以对这些评论提供有用或没有帮助的评分（称为“帮助评分”）.协助他们自己的产品购买决策。公司使用这些数据对于参与的市场,参与的时间获取知识,赢得在产品设计功能选择的潜在成功.</p>
+<p>阳光公司计划在网上市场推出和销售三种新产品：微波炉，婴儿奶嘴和吹风机。他们雇用了您的团队为顾问通过过去的客户评分,确定过去客户的关键模式，关系，度量和参数，以及其他竞争产品相关的评分和评论，以：1）在线销售策略； 2）确定能提供产品理想性的潜在重要设计功能。SunShine公司过去曾使用数据为销售策略提供信息，但他们以前没有使用过这种特殊的组合和数据类型。Sunshine特别感兴趣的是这些数据中基于时间的模式，以及它们是否以某种方式的交互能帮助公司制作成功的产品。</p>
+<p>为了协助你的这个项目,SunShine的数据中心已经提供了3数据份文件: hair_dryer.tsv, microwave.tsv, and pacifier.tsv.这些数据代表着顾客在指定时间对于三种产品评分和评论,对于数据标签定义的表单也提供.给你提供的数据文件是您解决此问题的唯一的数据。</p>
+<p>要求:</p>
+<p>1.分析提供的三个产品数据集，(以识别，描述和有数学支持证据，定量或定性，关系，星级，评论,和评分之内和之间的度量和参数，?)将帮助Sunshine Company在三个新的在线市场产品中取得成功。</p>
+<p>2.使用您的分析解决以下来自Sunshine的特定问题和要求:</p>
+<p>公司市场总监：</p>
+<p>a. 为了阳光公司跟踪, 一旦这三种产品在网上销售,找到一种根据最能提供信息的评级和评论的数据量度.</p>
+<p>b. 识别并讨论每个数据集中可能基于时间的度量和模式表示产品在在线市场中的声誉正在上升或下降。</p>
+<p>c. 确定最佳的基于文本的度量和基于评级的度量的组合表示可能成功或失败的产品.</p>
+<p>d. 特定星级会引起更多评论吗？ 例如，客户是否更有可能看到一系列低星级评定后写一些类型的评论？</p>
+<p>e. 是基于文字的评论的特定质量描述，例如“热情’’“失望”以及其他词汇,与评分水平密切相关？</p>
+<p>3.写一两页的信给阳光公司的市场总监，总结一下您团队的分析和结果。 包括针对您的团队结果的最有信心地的特定理由,推荐给市场总监。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>对评论文本进行情感分析，得到情感分。统计文本词汇量，与评分一起评估反馈的价值。通过分析反馈的数量和质量分析产品的口碑。</p>
+<h2 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h2><ul>
+<li>python</li>
+</ul>
+<p>对数据进行清洗</p>
+<ul>
+<li>python + nltk + TencentCloud API</li>
+</ul>
+<p>对文本进行情感分析</p>
+<ul>
+<li>Tableau 数据分析工具</li>
+</ul>
+<p>通过该工具对数据进行分析和作图</p>
+<ul>
+<li>SPSS + Matlab</li>
+</ul>
+<p>对数据进行拟合</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harveyl.cn/2020/04/17/2020-%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/" data-id="ckqfdaubk00008gvi5fc92w81" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-缓冲区炸弹" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/07/%E7%BC%93%E5%86%B2%E5%8C%BA%E7%82%B8%E5%BC%B9/" class="article-date">
+  <time datetime="2020-04-07T07:52:00.000Z" itemprop="datePublished">2020-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/07/%E7%BC%93%E5%86%B2%E5%8C%BA%E7%82%B8%E5%BC%B9/">缓冲区炸弹实验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>作者:harveylee</em><br><em>Email:<a href="mailto:&#104;&#97;&#x72;&#118;&#x65;&#121;&#x6c;&#x65;&#101;&#x68;&#x40;&#49;&#x36;&#51;&#46;&#x63;&#x6f;&#x6d;">&#104;&#97;&#x72;&#118;&#x65;&#121;&#x6c;&#x65;&#101;&#x68;&#x40;&#49;&#x36;&#51;&#46;&#x63;&#x6f;&#x6d;</a></em><br><em>Github:harveyleeh</em><br><em>Website:harveyl.cn</em></p>
+<h1 id="缓冲区炸弹"><a href="#缓冲区炸弹" class="headerlink" title="缓冲区炸弹"></a>缓冲区炸弹</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>​        C对于数组引用不进行任何边界检查，而且局部变量和状态信息（例如保存的寄存器值和返回地址）都存放在栈中。这两种情况结合到一起就能导致严重的程序错误，对越界的数组元素的写操作会破坏存储在栈中的状态信息。当程序使用这个被破坏的状态，试图重新加载寄存器或执行ret指令时，就会出现很严重的错误。<br>​        一种特别常见的状态破坏称为缓冲区溢出(bufferoverflow)。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harveyl.cn/2020/04/07/%E7%BC%93%E5%86%B2%E5%8C%BA%E7%82%B8%E5%BC%B9/" data-id="ckqfdaubw000b8gvi2f6p3fgk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-二进制炸弹" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/06/%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%82%B8%E5%BC%B9/" class="article-date">
+  <time datetime="2020-04-06T07:52:00.000Z" itemprop="datePublished">2020-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/06/%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%82%B8%E5%BC%B9/">二进制炸弹实验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>作者: harveylee</em><br><em>Email: <a href="mailto:&#x68;&#97;&#114;&#118;&#101;&#x79;&#108;&#x65;&#101;&#104;&#64;&#49;&#54;&#x33;&#x2e;&#x63;&#111;&#x6d;">&#x68;&#97;&#114;&#118;&#101;&#x79;&#108;&#x65;&#101;&#104;&#64;&#49;&#54;&#x33;&#x2e;&#x63;&#111;&#x6d;</a></em><br><em>Github: harveyleeh</em><br><em>Website: harveyl.cn</em></p>
+<h1 id="二进制炸弹"><a href="#二进制炸弹" class="headerlink" title="二进制炸弹"></a>二进制炸弹</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harveyl.cn/2020/04/06/%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%82%B8%E5%BC%B9/" data-id="ckqfdaubu00098gvifii99w3m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-IDA-Pro-入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/07/IDA-Pro-%E5%85%A5%E9%97%A8/" class="article-date">
+  <time datetime="2020-03-07T07:52:00.000Z" itemprop="datePublished">2020-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/IDA-Pro-%E5%85%A5%E9%97%A8/">IDA Pro 入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="IDA-Pro入门指南"><a href="#IDA-Pro入门指南" class="headerlink" title="IDA Pro入门指南"></a>IDA Pro入门指南</h1><h2 id="IDA-文件打开界面"><a href="#IDA-文件打开界面" class="headerlink" title="IDA 文件打开界面"></a>IDA 文件打开界面</h2><ol>
+<li>IDA View-A是反汇编窗口</li>
+<li>HexView-A是十六进制格式显示的窗口</li>
+<li>Imports是导入表（程序中调用到的外面的函数）</li>
+<li>Functions是函数表（这个程序中的函数）</li>
+<li>Structures是结构</li>
+<li>Enums是枚举<br><strong>我们进行逆向分析的主要场所就在IDA View-A反汇编窗口</strong>  </li>
+</ol>
+<h2 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h2><ol>
+<li>EAX 是”累加器”(accumulator), 它是很多加法乘法指令的缺省寄存器</li>
+<li>EBX 是”基地址”(base)寄存器, 在内存寻址时存放基地址</li>
+<li>ECX 是计数器(counter), 是重复(REP)前缀指令和LOOP指令的内定计数器</li>
+<li>EDX 则总是被用来放整数除法产生的余数</li>
+<li>ESI/EDI 分别叫做”源/目标索引寄存器”(source/destination index),因为在很多字符串操作指令中， DS:ESI指向源串,而ES:EDI指向目标串</li>
+<li>EBP 是”基址指针”(BASE POINTER), 它最经常被用作高级语言函数调用的”框架指针”(frame pointer)</li>
+<li>ESP 专门用作堆栈指针，被形象地称为栈顶指针，堆栈的顶部是地址小的区域，压入堆栈的数据越多，ESP也就越来越小。在32位平台上，ESP每次减少4字节。</li>
+</ol>
+<h2 id="生成汇编语句对应的机器代码"><a href="#生成汇编语句对应的机器代码" class="headerlink" title="生成汇编语句对应的机器代码"></a>生成汇编语句对应的机器代码</h2><p>“Options” –&gt; “General” –&gt; “Disassmbly”</p>
+<p>将右侧的”Number of opcode bytes” 修改为一个非零数即可显示程序对应机器码</p>
+<p>“Edit” –&gt; “Patch Program” –&gt; “Assemble”</p>
+<p>输入相应汇编代码后确定显示对应机器码</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harveyl.cn/2020/03/07/IDA-Pro-%E5%85%A5%E9%97%A8/" data-id="ckqfdaubp00028gvi9p62193x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Linux-to-go-安装指南及部分问题解决" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/07/Linux-to-go-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%E5%8F%8A%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="article-date">
+  <time datetime="2019-12-07T07:52:00.000Z" itemprop="datePublished">2019-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/07/Linux-to-go-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%E5%8F%8A%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">Linux to go 安装指南及部分问题解决</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Ubuntu安装历程及所遇到的问题记录-N卡"><a href="#Ubuntu安装历程及所遇到的问题记录-N卡" class="headerlink" title="Ubuntu安装历程及所遇到的问题记录(N卡)"></a>Ubuntu安装历程及所遇到的问题记录(N卡)</h1><ul>
+<li>安装方式：U盘启动器</li>
+<li>所用载体：128G移动固态硬盘</li>
+<li>安装版本：18.04(LTS)</li>
+<li>电脑型号：机械革命Z2(Nvidia显卡)</li>
+</ul>
+<h2 id="安装前设置"><a href="#安装前设置" class="headerlink" title="安装前设置"></a>安装前设置</h2><ol>
+<li><p>将固态格式化为ext4格式，大小选择4096字节。(所谓的4k对齐) (推荐软件：DiskGenius)</p>
+</li>
+<li><p>分区：分出三个分区（我的分配方案，8g+60g+50g）</p>
+</li>
+<li><p>进入BIOS，将 <em>security boot</em> 改为[false]</p>
+</li>
+<li><p>设置Root，将 <em>UEFI USB DISK</em> 项（指向你的U盘）放到第一，将<em>UEFI HDD WINDOWS</em> 项置后，防止其优先启动。</p>
+</li>
+<li><p>保存退出。</p>
+</li>
+</ol>
+<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><ol>
+<li><p>由于有独显（N卡）存在，直接选择 <em>Install Ubuntu</em> 项会有驱动未安装导致界面卡住的问题。应将光标指向 “Install Ubuntu” 项（<strong>切勿选择</strong>），然后按 ‘e’ 键。在出现的界面中找到 <em>quiet splash</em>，将其改为 <em>nomodeset</em>，之后按 <em>F10</em> 进入安装。</p>
+</li>
+<li><p>根据需要选择语言和键盘分布等，到”<strong>安装选项</strong>“项时又要注意的地方。</p>
+</li>
+<li><p>当安装进程达到”安装选项”时，选择其他选项，点击 <em>继续</em>。</p>
+</li>
+<li><p>关键部分<strong>分区</strong>，在栏中找到<em>空闲</em>项，将8g分区用于swap分区；将60g分区用于ext4日志文件系统，挂载于/分区；将50g分区用于ext4日志文件系统，挂载于/home分区。安装启动引导器的设备选择为<em><strong>该移动固态硬盘</strong></em>。点击 <em>现在安装</em>。（若界面中没有该选项，可按住 <em>windows</em> 键用鼠标拖动屏幕）</p>
+</li>
+<li><p>跟着流程安装，安装完后需要重启，在重启过程中要<strong>拔掉U盘</strong>，同时<strong>狂按 <em>F10</em></strong>。(注：其他机器可能不是F10键，但是一定要进入grub菜单中)</p>
+</li>
+</ol>
+<h2 id="安装结束后"><a href="#安装结束后" class="headerlink" title="安装结束后"></a>安装结束后</h2><ol>
+<li><p>进入以后，选择Ubuntu选项。之后会有紫框，光标指向 <em>Ubuntu</em>(<strong>切勿选择</strong>)，然后按 <em>e</em> 键，在出来的界面中找到 <em>quiet splash</em>，在其后添加 <em>acpi_osi=Linux nomodeset</em>，按 <em>F10</em> 键进入。</p>
+</li>
+<li><p>换源：<br>在终端中输入 sudo gedit(也可选择vim) /etc/apt/sources.list</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit(也可选择vim) /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;&emsp;清空该文件，然后写入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;&emsp;保持退出，然后在终端中输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>安装驱动<br>在终端中输入</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ubuntu-drivers devices</span><br><span class="line"></span><br><span class="line">$ sudo ubuntu-drivers autoinstall</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;&emsp;安装完成后应用程序菜单中会出现Nvidia的logo，这时安装完成。</p>
+<ol start="4">
+<li>重启，进入grub菜单，选择Ubuntu，之后便可直接进入，至此安装基本结束。</li>
+</ol>
+<hr>
+<p>后续将记录美化历程和性能优化过程。</p>
+<hr>
+<p>参考资料：<br>1）<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36982160/article/details/78393328">https://blog.csdn.net/qq_36982160/article/details/78393328</a> （安装时显卡问题）<br>2）<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37935670/article/details/80377196">https://blog.csdn.net/qq_37935670/article/details/80377196</a>  （显卡驱动问题）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harveyl.cn/2019/12/07/Linux-to-go-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%E5%8F%8A%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" data-id="ckqfdaubr00058gvi3epc5bbr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-三种标记语言" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/07/%E4%B8%89%E7%A7%8D%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" class="article-date">
+  <time datetime="2019-11-07T07:52:00.000Z" itemprop="datePublished">2019-11-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/07/%E4%B8%89%E7%A7%8D%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/">三种标记语言</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>作者: harveylee</em><br><em>Email: <a href="mailto:&#x68;&#x61;&#x72;&#118;&#101;&#121;&#x6c;&#101;&#x65;&#x68;&#64;&#x31;&#54;&#x33;&#46;&#x63;&#x6f;&#x6d;">&#x68;&#x61;&#x72;&#118;&#101;&#121;&#x6c;&#101;&#x65;&#x68;&#64;&#x31;&#54;&#x33;&#46;&#x63;&#x6f;&#x6d;</a></em><br><em>Github: harveyleeh</em><br><em>Website: harveyl.cn</em></p>
+<hr>
+<h1 id="三种种标记语言"><a href="#三种种标记语言" class="headerlink" title="三种种标记语言"></a>三种种标记语言</h1><p>XML语言、 JSON语言、 YAML语言</p>
+<h2 id="XML语言"><a href="#XML语言" class="headerlink" title="XML语言"></a>XML语言</h2><p>扩展标记语言(Extensible Markup Language, XML)，用于标记电子文件使其具有结构性的标记语言，可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。<br>类似HTML，格式统一，跨平台和语言，早已成为业界公认的标准。<br>XML是标准通用标记语言 (SGML) 的子集，非常适合Web传输。XML提供统一的的方法来描述和交换独立于应用程序或供应商的结构化数据。<br>示例:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">person</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">firstname</span>&gt;</span>Harvey<span class="tag">&lt;/<span class="name">firstname</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">lastname</span>&gt;</span>Lee<span class="tag">&lt;/<span class="name">lastname</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">address</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">streetAddr</span>&gt;</span>FuYuan Road<span class="tag">&lt;/<span class="name">stressAddr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">city</span>&gt;</span>ChangSha<span class="tag">&lt;<span class="name">city</span>&gt;</span>  <span class="comment">&lt;!--spicy(this is a comment)--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">adress</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">prof</span>&gt;</span>green <span class="tag">&lt;/<span class="name">prof</span>&gt;</span><span class="tag">&lt;<span class="name">prof</span>&gt;</span>and young<span class="tag">&lt;/<span class="name">prof</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">person</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>XML语言的优缺点</strong></p>
+<ul>
+<li>优点：<ul>
+<li>格式统一，符合标准</li>
+<li>容易与其他系统进行远程交互，数据共享比较方便。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>XML文件庞大，文件格式复杂，传输占带宽。</li>
+<li>服务器端和客户端都需要花费大量代码来解析XML，导致服务器端和客户端代码变得异常复杂且不易维护</li>
+<li>客户端不同浏览器之间解析XML的方式不一致，需要重复编写很多代码；</li>
+<li>服务器端和客户端解析XML花费较多的资源和时间。</li>
+</ul>
+</li>
+</ul>
+<h2 id="JSON语言"><a href="#JSON语言" class="headerlink" title="JSON语言"></a>JSON语言</h2><p>JSON(JavaScript Object Notation, JSON)，一种轻量级的数据交换格式，具有良好的可读和便于快速编写的特性。可在不同平台之间进行数据交换。常用来完成配置文件，使用有类型键值对。<br>示例：  </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;firstname&quot;</span> : <span class="string">&quot;Harvey&quot;</span>,</span><br><span class="line"><span class="string">&quot;lastname&quot;</span> : <span class="string">&quot;Lee&quot;</span>,</span><br><span class="line"><span class="string">&quot;address&quot;</span> : &#123;</span><br><span class="line">    <span class="attr">&quot;stressAddr&quot;</span> : <span class="string">&quot;FuYuan Road&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;city&quot;</span> : <span class="string">&quot;ChangSha&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line"><span class="string">&quot;prof&quot;</span> : [<span class="string">&quot;green&quot;</span>, <span class="string">&quot;young&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>JSON语言的优缺点</strong></p>
+<ul>
+<li>优点：<ul>
+<li>数据结构比较简单，易于读写，格式是压缩的，占用的带宽小；</li>
+<li>易于解析，客户端JavaScript可以简单的通过eval()进行JSON数据的读取；</li>
+<li>支持多种语言，包括ActionScript, C, C#, ColdFusion, Java, JavaScript, Perl, PHP, Python, Ruby等服务器端语言，便于服务器端的解析；</li>
+<li>因为JSON格式能直接为服务器端代码使用，大大简化了服务器端和客户端的代码开发量，且完成任务不变，并且易于维护。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>没有XML格式这么推广的深入人心和喜用广泛，没有XML那么通用性；</li>
+<li>JSON格式目前在Web Service中推广还属于初级阶段。</li>
+</ul>
+</li>
+</ul>
+<h2 id="YAML语言"><a href="#YAML语言" class="headerlink" title="YAML语言"></a>YAML语言</h2><p>YAML(YAML Ain’t Markup Language, YAML)，使用无类型键值对。用减号表示并列关系，使用缩进来表示层次（这点和Python语言很像）。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">firstname :</span> <span class="string">Harvey</span></span><br><span class="line"><span class="attr">lastname :</span> <span class="string">Lee</span></span><br><span class="line"><span class="attr">address :</span> </span><br><span class="line">    <span class="string">-stressAddr</span> <span class="string">:</span> <span class="string">FuYuan</span> <span class="string">Road</span></span><br><span class="line">    <span class="string">-city</span> <span class="string">:</span> <span class="string">ChangSha</span></span><br><span class="line"><span class="attr">text :</span> <span class="string">|</span>   <span class="comment">#Comment</span></span><br><span class="line"><span class="string">green</span> <span class="string">and</span> <span class="string">young</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>YAML语言的优缺点</strong></p>
+<ul>
+<li>优点：<ul>
+<li>便于人类读写；</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>类似于JSON语言。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>谢谢阅读</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harveyl.cn/2019/11/07/%E4%B8%89%E7%A7%8D%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" data-id="ckqfdaubt00088gvi2uu107z7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/27/%E6%AD%8C%E8%AF%8D%E6%91%98%E6%8A%84/">歌词摘抄</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/06/2021%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/">2021美赛总结</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/05/K8s%20%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">K8s 基础概念</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/17/2020-%E7%BE%8E%E8%B5%9B%E6%80%BB%E7%BB%93/">2020 美赛总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
